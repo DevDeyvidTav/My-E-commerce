@@ -6,16 +6,10 @@ import { produtos } from "../Products"
 export function Loja() {
 
 
-  const { cart, setCart, valores, setValores, soma, setSoma,valorTotal } = useContext(CartContext)
+  const { cart, setCart, valores, setValores, soma, setSoma,valorTotal, addItem } = useContext(CartContext)
   
   useEffect(()=>valorTotal(),[valores])
 
-  
-  
-  function addItem(produto) {
-    setCart([...cart, produto])
-    setValores([...valores, produto.Preco])
-  }
   return (
 
     <ul className="flex flex-wrap gap-4 justify-center mt-4">
