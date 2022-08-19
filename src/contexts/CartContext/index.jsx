@@ -4,9 +4,6 @@ export const CartContext = createContext({})
 import { toast } from 'react-toastify'
 
 export const CartProvider = ({ children}) => {
-    const hello = {
-        nome: 'hello'
-    }
     const [cart, setCart] = useState([])
     const [valores, setValores] = useState([])
     let [soma, setSoma] = useState(0)
@@ -41,9 +38,17 @@ export const CartProvider = ({ children}) => {
         toast.success('adicionado')
       }
     const [qtditems, setQtditems] = useState(0)
+    const [pedidos, setPedidos] = useState([])
+    const finalizePurchase = () => {
+        setPedidos([...cart])
+        setCart([])
+        setSoma(0)
+        setQtditems(0)
+    }
 
     return(
-        <CartContext.Provider value={{hello, cart, setCart, valores, setValores, soma, setSoma, cartDelete, valorTotal, qtditems, setQtditems, addItem}} > {children}</CartContext.Provider>
+        <CartContext.Provider value={{ cart, setCart, valores, setValores, soma, setSoma, finalizePurchase,cartDelete, valorTotal, qtditems, setQtditems, addItem, pedidos
+        }} > {children}</CartContext.Provider>
 
     )
 }
