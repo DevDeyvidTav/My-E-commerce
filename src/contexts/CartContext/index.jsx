@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
 export const CartContext = createContext({})
+import { toast } from 'react-toastify'
 
 export const CartProvider = ({ children}) => {
     const hello = {
@@ -17,6 +18,7 @@ export const CartProvider = ({ children}) => {
         tempValores.splice(i, 1)
         setValores(tempValores)
         setQtditems(qtditems - 1)
+        toast.success('removido')
       }
       function valorTotal() {
         var numeros = [...valores];
@@ -36,6 +38,7 @@ export const CartProvider = ({ children}) => {
         setCart([...cart, produto])
         setValores([...valores, produto.Preco])
         setQtditems(qtditems + 1)
+        toast.success('adicionado')
       }
     const [qtditems, setQtditems] = useState(0)
 
