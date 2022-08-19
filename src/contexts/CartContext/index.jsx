@@ -40,10 +40,13 @@ export const CartProvider = ({ children}) => {
     const [qtditems, setQtditems] = useState(0)
     const [pedidos, setPedidos] = useState([])
     const finalizePurchase = () => {
+        toast.success(`Compra finalizada`)
         setPedidos([...cart])
         setCart([])
         setSoma(0)
         setQtditems(0)
+        setValores([])
+  
     }
 
     return(
