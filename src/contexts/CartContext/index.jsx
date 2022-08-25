@@ -48,9 +48,10 @@ export const CartProvider = ({ children}) => {
         setValores([])
   
     }
+    const [open, setOpen] = useState(false)
 
     return(
-        <CartContext.Provider value={{ cart, setCart, valores, setValores, soma, setSoma, finalizePurchase,cartDelete, valorTotal, qtditems, setQtditems, addItem, pedidos
+        <CartContext.Provider value={{ open, setOpen, cart, setCart, valores, setValores, soma, setSoma, finalizePurchase,cartDelete, valorTotal, qtditems, setQtditems, addItem, pedidos
         }} > {children}</CartContext.Provider>
 
     )

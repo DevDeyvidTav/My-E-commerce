@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react"
 import { CartContext } from "../contexts/CartContext"
 import { NavLink } from "react-router-dom"
 export function Cart() {
-  const { cart, setCart, valores, setValores, soma, setSoma, cartDelete, valorTotal, finalizePurchase } = useContext(CartContext)
+  const { cart, open , valores, soma, cartDelete, valorTotal, finalizePurchase } = useContext(CartContext)
   useEffect(() => valorTotal(), [valores])
   return (
     <div className="cart | w-screen h-5/6 flex items-center justify-center">
@@ -19,9 +19,9 @@ export function Cart() {
             </li>
           )
         })}
-        <p className={`${soma == 0 ? 'hidden' : 'flex'} bg-green-400 gap-6 w-72 p-2 rounded-md`}>Valor total: R${soma}</p>
+        <p className={`${soma == 0 ? 'hidden' : 'flex'} bg-green-400 text-xl font-arial font-bold text-white justify-center gap-6 w-72 p-2 rounded-md`}>Valor total: R${soma}</p>
         <p className={`${soma == 0 ? 'flex' : 'hidden'} max-h-80 h-80 mt-32  flex-col  gap-10 text-2xl w-72 text-white shadow-2xl shadow-zinc-300 rounded-md p-10 items-center justify-center`}><p className="relative">Seu carrinho ainda está vazio, compre algo na loja</p>
-          <button className="bg-violet-800 w-56 max-w-56 relative rounded-md p-2 hover:w-64 hover:duration-300 ease-in-out"><NavLink to="/Loja">Voltar para a Loja</NavLink></button>
+          <button className="bg-violet-800 w-56 max-w-56  rounded-md p-2 hover:w-64 hover:duration-300 ease-in-out"><NavLink to="/Loja">Voltar para a Loja</NavLink></button>
         </p>
         <button onClick={()=>finalizePurchase()} className={`${soma == 0 ? 'hidden' : 'flex'} "font-arial font-bold text-white text-2xl flex justify-center bg-violet-800 w-56 max-w-56 relative rounded-md p-2 hover:w-64 hover:duration-300 ease-in-out`}>Comprar</button>
       </ul>
